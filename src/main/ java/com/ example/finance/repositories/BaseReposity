@@ -1,0 +1,29 @@
+package com.example.finance.repositories;
+
+import java.util.List;
+
+public abstract class BaseRepository<T> {
+
+    protected List<T> items;
+    protected String fileName;
+
+    public BaseRepository(String fileName) {
+        this.fileName = fileName;
+        load();
+    }
+
+    protected abstract Class<T> getType();
+
+    protected void load() {
+        // load from JSON
+    }
+
+    protected void save() {
+        // save to JSON
+    }
+
+    public void add(T item) {
+        items.add(item);
+        save();
+    }
+}
